@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>首页</title>
+    <style type="text/css">
+        body{
+           background-image: url("首页.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        .plant{
+            position: absolute;
+            font-size: 50px;
+        }
+    </style>
+    <script type="text/javascript">
+
+            var speed = [];
+
+            function init() {
+                for (var i = 0; i<5; i++) {
+                    document.getElementById("plant" + i).style.top = "-10px";
+
+                    var width = document.body.offsetWidth;
+                    var left = Math.random() * width;
+                    document.getElementById("plant" + i).style.left = left + "px";
+
+                    var size = Math.random() * 30 + 20;
+                    document.getElementById("plant" + i).style.fontSize = size + "px";
+
+                    speed.push(Math.random() *3+2);
+                }
+                movePlant();
+            }
+            function movePlant() {
+                for (var i = 0; i < 5; i++) {
+                    var top = document.getElementById("plant" + i).offsetTop;
+                    top += speed[i];
+
+                    document.getElementById("plant" + i).style.top = top + "px";
+
+                    if (top > 750) {
+                        document.getElementById("plant" + i).style.top = "-10px";
+
+                        var width = document.body.offsetWidth;
+                        var left = Math.random() * width;
+                        document.getElementById("plant" + i).style.left = left + "px";
+                    }
+                }
+                window.requestAnimationFrame(movePlant);
+        }
+    </script>
+</head>
+<body onload="init()">
+
+       <div class="plant" id="plant0">🍃</div>
+       <div class="plant" id="plant1">🍃</div>
+       <div class="plant" id="plant2">🍃</div> ··
+       <div class="plant" id="plant3">🍃</div>
+       <div class="plant" id="plant4">🍃</div>
+</body>
+</html>
